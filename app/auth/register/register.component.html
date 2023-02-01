@@ -1,0 +1,112 @@
+<section class="vh-100">
+	<div class="container-fluid h-custom">
+		<div class="row d-flex justify-content-center align-items-center h-100">
+			<div class="col-md-9 col-lg-6 col-xl-5">
+				<img src="assets/images/reg_bg.svg" alt="register_bacgkround" class="img-fluid">
+			</div>
+			<div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+				<form [formGroup]="registerForm" (submit)="onSubmit(registerForm.value)">
+					<div class="text-center text-lg-start mb-4 pt-2">
+						<h1 class="mb-3">Register</h1>
+					</div>
+					<!-- First Name input -->
+					<div class="form-floating mb-3">
+						<label class="lbl-font-size" for="fname">First name</label>
+						<input type="text" id="fname" formControlName="fname" class="form-control form-control-lg" placeholder="Please enter first name" required/>
+
+						<div *ngIf="fname && (fname.dirty || fname.touched)"  class="alert">
+							<div *ngIf="fname.errors?.['required']">
+								Name is required.
+							</div>
+						</div>
+					</div>
+					
+                    <!-- Last Name input -->
+					<div class="form-floating mb-3">
+						<label class="lbl-font-size" for="lname">Last name</label>
+						<input type="text" id="fname" formControlName="lname" class="form-control form-control-lg" placeholder="Please enter last name" required/>
+
+						<div *ngIf="lname && (lname.dirty || lname.touched)"  class="alert">
+							<div *ngIf="lname.errors?.['required']">
+								Last name is required.
+							</div>
+						</div>
+					</div>
+
+                    <!-- Age input -->
+					<div class="form-floating mb-3">
+						<label class="lbl-font-size" for="age">Age</label>
+						<input type="tel" id="age" formControlName="age" class="form-control form-control-lg" placeholder="Please enter age" maxlength="3" required/>
+
+						<div *ngIf="age && (age.dirty || age.touched)"  class="alert">
+							<div *ngIf="age.errors?.['required']">
+								Age is required.
+                            </div>
+						</div>
+					</div>
+					
+					<!-- Email input -->
+					<div class="form-floating mb-3">
+						<label class="lbl-font-size" for="email">Email</label>
+						<input type="email" id="email" formControlName="email" class="form-control form-control-lg" placeholder="Please enter email address" required/>
+
+						<div *ngIf="email && (email.dirty || email.touched)"  class="alert">
+							<div *ngIf="email.errors?.['required']">
+								Email is required.
+							</div>
+
+							<div *ngIf="email.errors?.['email']">
+								Invalid email address.
+							</div>
+						</div>
+					</div>
+
+					
+					
+
+					<!-- Password input -->
+					<div class="form-floating mb-3">
+						<label class="lbl-font-size" for="password">Password</label>
+						<input type="password" id="password" formControlName="password" class="form-control form-control-lg" placeholder="Please enter password" required/>
+
+						<div *ngIf="password && (password.dirty || password.touched)" class="alert">
+							<div *ngIf="password.errors?.['required']">
+								Password is required.
+							</div>
+
+							<div *ngIf="password.errors?.['pattern'] || password.errors?.['minlength']">
+								Your password should be:
+								<ul>
+									<li *ngIf="password.errors?.['minlength']">
+										at least 8 characters long
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Confirm Password input -->
+					<div class="form-floating mb-3">
+						<label class="lbl-font-size" for="confirmPassword">Confirm Password</label>
+						<input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control form-control-lg" placeholder="Please re-enter Password" required/>
+
+						<div *ngIf="confirmPassword && (confirmPassword.dirty || confirmPassword.touched)" class="alert">
+							<div *ngIf="confirmPassword.errors?.['required']">
+								Confirm passwors is required.
+							</div>
+
+							<div *ngIf="confirmPassword.errors?.['matching']">
+								Passwords are not matching.
+							</div>
+						</div>
+					</div>
+
+					<div class="text-center text-lg-start mt-4 pt-2">
+						<button type="submit" class="btn btn-primary btn-lg register-btn" [disabled]="registerForm.invalid">Register</button>
+						<p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a (click)="navigate('/login')" style="cursor: pointer;" class="link-danger">Login</a></p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,10 @@
+<div class="chat-messages" style="margin-left: 250px">
+   <div class="chat-messages-show-container">
+     <ul class="chat-messages-show-list" id="message-list">
+     </ul>
+   </div>
+   <div class="chat-messages-create-container"> 
+     <textarea class="chat-messages-create-input" type="text" [(ngModel)]="message"></textarea>
+     <button  class="chat-messages-create-button" (click)="SendMessage()"> Send </button>
+   </div>
+</div>
